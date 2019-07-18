@@ -13,6 +13,11 @@ If it doesn't, it fails the request.
 If it does, it passes the request on.
 Note that, if the api key is invalid, normal apiman validation will still occur down the line; and the request will still be blocked with the default apiman error message for invalid api keys.
 
+## Build
+This is a maven project. `mvn clean install` will build and install it into the default/set maven repository. And the plugin can then be installed from the apimanui interface. If your apimanui is deployed remotely, the remote system must have maven installed, and this project must then be deployed/installed into the remote system's maven repository before it can be found/used by the remote apimanui.
+
+Moreover, this project references the parent [apiman-plugins](https://github.com/apiman/apiman-plugins) project's [pom.xml](https://github.com/apiman/apiman-plugins/blob/master/pom.xml). You can either edit your [pom.xml](pom.xml) file specifying the path to the parent pom, or clone this project into your local clone of [apiman-plugins](https://github.com/apiman/apiman-plugins). Put it in the root folder, like the other plugins there already.
+
 ## Author
 
 Gabriel Owoeye <owoeye.g.o@gmail.com>
