@@ -13,23 +13,23 @@ import io.apiman.gateway.engine.policy.IPolicyContext;
  *
  * @author Gabriel Owoeye {@literal <owoeye.g.o@gmail.com>}
  */
-public class ApiKeyCheckPolicy extends AbstractMappedPolicy<String> {
+public class ApiKeyCheckPolicy extends AbstractMappedPolicy<ApiKeyCheckBean> {
 
     private static final int KEY_NOT_PROVIDED = 9999;
 
     @Override
-    protected Class<String> getConfigurationClass() {
-        return String.class;
+    protected Class<ApiKeyCheckBean> getConfigurationClass() {
+        return ApiKeyCheckBean.class;
     }
 
     @Override
-    protected void doApply(ApiRequest request, IPolicyContext context, String config, IPolicyChain<ApiRequest> chain) {
+    protected void doApply(ApiRequest request, IPolicyContext context, ApiKeyCheckBean config,
+                           IPolicyChain<ApiRequest> chain) {
         if (request.getApiKey() != null) {
             chain.doApply(request);
         } else {
-            String msg = "The X-API-KEY header was not set"; // todo set this in the policy UI config
             chain.doFailure(context.getComponent(IPolicyFailureFactoryComponent.class).createFailure(
-                    PolicyFailureType.Authentication, KEY_NOT_PROVIDED, msg));
+                    PolicyFailureType.Authentication, KEY_NOT_PROVIDED, config.getErrorMessage()));
         }
     }
 }

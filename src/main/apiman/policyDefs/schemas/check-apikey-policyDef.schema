@@ -4,5 +4,10 @@
   "title" : "ApiKey Check Policy",
   "description" : "A policy that only allows requests with API key.",
   "properties": {
+    "errorMessage": {
+      "type": "string",
+      "title": "Error Message",
+      "default": "X-API-KEY header was not set."
+    }
   }
 }
