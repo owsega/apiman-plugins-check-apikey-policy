@@ -1,0 +1,6 @@
+{
+  "frameworkVersion" : 1.0,
+  "name" : "ApiKey Check Policy Plugin",
+  "description" : "This plugin only permits requests with the x-api-key header set",
+  "version" : "${project.version}"
+}

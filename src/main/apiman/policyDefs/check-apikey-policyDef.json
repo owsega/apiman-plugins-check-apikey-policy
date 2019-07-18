@@ -1,0 +1,9 @@
+{
+  "id" : "check-apikey-policy",
+  "name" : "ApiKey Check Policy",
+  "description" : "A policy that only permits requests with an api key. This is not normally necessary, but I have a restricted test API; and I want the flexibility of an public API (being able to edit the definitions, implementation, versions, plans, etc) and the authentication enforcement of private APIs with contracts. Hence, all callers of the api using this policy must have x-api-key generated from contracts. However, I am still allowed to change the underlying internals of the API.",
+  "policyImpl" : "plugin:${project.groupId}:${project.artifactId}:${project.version}:${project.packaging}/io.apiman.plugins.checkapikey.ApiKeyCheckPolicy",
+  "icon" : "asterisk",
+  "formType" : "JsonSchema",
+  "form" : "schemas/check-apikey-policyDef.schema"
+}
