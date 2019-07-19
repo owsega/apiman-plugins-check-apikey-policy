@@ -15,7 +15,7 @@ import io.apiman.gateway.engine.policy.IPolicyContext;
  */
 public class ApiKeyCheckPolicy extends AbstractMappedPolicy<ApiKeyCheckBean> {
 
-    private static final int KEY_NOT_PROVIDED = 9999;
+    static final int KEY_NOT_PROVIDED = 9999;
 
     @Override
     protected Class<ApiKeyCheckBean> getConfigurationClass() {

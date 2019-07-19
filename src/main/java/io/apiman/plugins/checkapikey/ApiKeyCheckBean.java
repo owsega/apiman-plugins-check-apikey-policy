@@ -1,6 +1,8 @@
 package io.apiman.plugins.checkapikey;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.Serializable;
 
@@ -10,9 +12,11 @@ import java.io.Serializable;
  *
  * @author Gabriel Owoeye {@literal <owoeye.g.o@gmail.com>}
  */
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonPropertyOrder({"errorMessage"})
 public class ApiKeyCheckBean implements Serializable {
 
-    @JsonProperty
+    @JsonProperty("errorMessage")
     private String errorMessage;
 
     public String getErrorMessage() {
